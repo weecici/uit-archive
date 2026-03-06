@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1</title>
+    <link href="style/main.css" rel="stylesheet" type="text/css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        canvas { border: 1px solid black; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h1 class="title">CS105 - DRAWING TOOL</h1>
+            <h3 class="author">UIT</h3>
+        </div>
+        <p class="hint">ESC</p>
+        <label for="algorithm">Choose Algorithm:</label>
+        <select id="algorithm">
+            <option value="dda">DDA Algorithm</option>
+            <option value="bresenham">Bresenham Algorithm</option>
+            <option value="midpoint">Midpoint Circle Algorithm</option>
+            <option value="ellipse">Midpoint Ellipse Algorithm</option>
+        </select>
+        <div class="main-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        <div class="buttons">
+            <button id="reset">Reset</button>
+        </div>
+        <script>
+            let script;
+            document.getElementById("algorithm").addEventListener("change", function() {
+                if (script) document.body.removeChild(script);
+                script = document.createElement("script");
+                script.src = "src/" + this.value + ".js";
+                document.body.appendChild(script);
+            });
+            document.getElementById("algorithm").dispatchEvent(new Event("change"));
+        </script>
+    </div>
+</body>
+</html>
