@@ -10,3 +10,7 @@ wheels/
 .venv
 data/
 *.pdf
+
+# report
+report*/
+assets/
