@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab03 - Hình học Fractal</title>
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="app-header">
+            <h1>Lab03 - Vẽ hình học Fractal</h1>
+            <p class="subtitle">Lựa chọn cách vẽ và điều chỉnh mức lặp n để quan sát sự thay đổi hình dạng.</p>
+        </header>
+
+        <section class="controls" aria-label="Bộ điều khiển">
+            <div class="control-item">
+                <label for="fractalType">Loại fractal</label>
+                <select id="fractalType"></select>
+            </div>
+            <div class="control-item range-control">
+                <label for="levelRange">Mức lặp n</label>
+                <input id="levelRange" type="range" min="0" max="6" value="3" step="1">
+                <output id="levelValue" for="levelRange">3</output>
+            </div>
+            <div class="control-item" id="cInputContainer" style="display: none;">
+                <label for="cInput">Nhập c:</label>
+                <input id="cInput" type="text" value="-0.7+0.27015i" style="width: 120px;">
+            </div>
+        </section>
+
+        <section class="meta-info">
+            <p id="fractalDescription"></p>
+            <p id="levelBound"></p>
+        </section>
+
+        <section class="canvas-panel">
+            <canvas id="fractalCanvas" aria-label="Khung vẽ fractal"></canvas>
+        </section>
+    </main>
+
+    <script src="src/kochSnowflake.js"></script>
+    <script src="src/minkowskiIsland.js"></script>
+    <script src="src/sierpinskiTriangle.js"></script>
+    <script src="src/sierpinskiSquare.js"></script>
+    <script src="src/mandelbrotJulia.js"></script>
+    <script src="src/main.js"></script>
+</body>
+</html>

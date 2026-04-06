@@ -1,0 +1,139 @@
+:root {
+    --bg-top: #f4f7fb;
+    --bg-bottom: #dce7f6;
+    --panel: #ffffff;
+    --border: #c4d3e7;
+    --text: #10243b;
+    --muted: #3f5a78;
+    --accent: #1d5da8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "IBM Plex Sans", "Tahoma", sans-serif;
+    color: var(--text);
+    background: linear-gradient(165deg, var(--bg-top), var(--bg-bottom));
+}
+
+.app-shell {
+    width: min(1150px, 96vw);
+    margin: 1.2rem auto 1.6rem;
+    padding: 1rem 1.2rem 1.4rem;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 14px 30px rgba(16, 36, 59, 0.08);
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    letter-spacing: 0.2px;
+}
+
+.subtitle {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+}
+
+.controls {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 0.9rem 1.2rem;
+    padding: 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #f9fbfe;
+}
+
+.control-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.control-item label {
+    font-weight: 600;
+    color: #1a3f67;
+}
+
+.control-item select,
+.control-item input[type="range"] {
+    width: 100%;
+}
+
+.control-item select {
+    padding: 0.45rem 0.5rem;
+    border: 1px solid #b8cae0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--text);
+}
+
+.range-control {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.range-control label {
+    margin: 0;
+}
+
+#levelValue {
+    min-width: 2rem;
+    text-align: center;
+    font-weight: 700;
+    color: var(--accent);
+    border: 1px solid #b8cae0;
+    border-radius: 7px;
+    padding: 0.18rem 0.4rem;
+    background: #ffffff;
+}
+
+.meta-info {
+    margin: 0.85rem 0 0.75rem;
+    color: var(--muted);
+}
+
+.meta-info p {
+    margin: 0.3rem 0;
+}
+
+.canvas-panel {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.8rem;
+    background: linear-gradient(180deg, #ffffff, #f3f8ff);
+}
+
+#fractalCanvas {
+    display: block;
+    width: 100%;
+    aspect-ratio: 14 / 9;
+    border: 1px solid #d4deea;
+    border-radius: 8px;
+    background: #f8fbff;
+}
+
+@media (max-width: 760px) {
+    .app-shell {
+        width: 95vw;
+        padding: 0.9rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+    }
+}
