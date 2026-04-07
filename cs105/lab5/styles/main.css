@@ -1,0 +1,358 @@
+:root {
+    --bg-1: #f6f1e8;
+    --bg-2: #e8eef8;
+    --bg-3: #f3f7f2;
+    --panel-bg: rgba(255, 255, 255, 0.88);
+    --panel-border: rgba(15, 23, 42, 0.12);
+    --panel-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
+    --text-main: #102033;
+    --text-soft: #5a677a;
+    --surface: rgba(255, 255, 255, 0.72);
+    --accent: #d97706;
+    --accent-2: #0f766e;
+    --viewport-bg: linear-gradient(160deg, #09111f 0%, #101c2e 55%, #1c283b 100%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    overflow: auto;
+    font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+    color: var(--text-main);
+    background:
+        radial-gradient(900px 500px at 12% 15%, rgba(15, 118, 110, 0.16), transparent 58%),
+        radial-gradient(900px 500px at 88% 18%, rgba(217, 119, 6, 0.14), transparent 54%),
+        radial-gradient(700px 500px at 60% 92%, rgba(30, 64, 175, 0.12), transparent 55%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 85%);
+    pointer-events: none;
+}
+
+.app {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(320px, 380px) 1fr;
+    gap: 16px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.panel,
+.viewport {
+    border-radius: 24px;
+    box-shadow: var(--panel-shadow);
+    animation: rise-in 0.65s ease both;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    overflow: auto;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(244, 247, 252, 0.84));
+    border: 1px solid var(--panel-border);
+    backdrop-filter: blur(14px);
+}
+
+h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.section {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.86), rgba(244, 248, 253, 0.8));
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+    animation: fade-in 0.55s ease both;
+}
+
+.section:nth-of-type(1) {
+    animation-delay: 0.06s;
+}
+
+.section:nth-of-type(2) {
+    animation-delay: 0.12s;
+}
+
+.section:nth-of-type(3) {
+    animation-delay: 0.18s;
+}
+
+.section:nth-of-type(4) {
+    animation-delay: 0.24s;
+}
+
+.section:nth-of-type(5) {
+    animation-delay: 0.3s;
+}
+
+.section h2 {
+    margin: 0 0 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #0f172a;
+}
+
+.control-row {
+    display: grid;
+    grid-template-columns: 18px 1fr 52px;
+    align-items: center;
+    gap: 12px;
+    margin: 8px 0;
+}
+
+.control-row label {
+    font-weight: 700;
+    color: var(--text-soft);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.control-row input[type="range"] {
+    width: 100%;
+    appearance: none;
+    background: transparent;
+    accent-color: var(--accent-2);
+}
+
+.control-row input[type="range"]::-webkit-slider-runnable-track {
+    height: 7px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(15, 118, 110, 0.9), rgba(217, 119, 6, 0.94));
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.18);
+}
+
+.control-row input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin-top: -5.5px;
+    border: 2px solid rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #dbeafe);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+}
+
+.control-row input[type="range"]::-moz-range-track {
+    height: 7px;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(15, 118, 110, 0.9), rgba(217, 119, 6, 0.94));
+    box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.18);
+}
+
+.control-row input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.96);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #dbeafe);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.25);
+}
+
+.control-row input[type="range"]:focus-visible {
+    outline: none;
+}
+
+.control-row output {
+    min-width: 52px;
+    padding: 4px 8px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: #0f172a;
+    background: rgba(15, 23, 42, 0.05);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 999px;
+}
+
+.actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 11px 12px;
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(135deg, #0f172a, #1d4ed8);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: 0 12px 24px rgba(29, 78, 216, 0.24);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.03);
+    box-shadow: 0 16px 30px rgba(29, 78, 216, 0.28);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus-visible {
+    outline: 2px solid rgba(15, 118, 110, 0.45);
+    outline-offset: 2px;
+}
+
+.viewport {
+    position: relative;
+    overflow: hidden;
+    background: var(--viewport-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.viewport::before {
+    content: "";
+    position: absolute;
+    inset: -140px;
+    background:
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.18), transparent 32%),
+        radial-gradient(circle at 78% 72%, rgba(16, 185, 129, 0.18), transparent 36%),
+        radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.09), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.viewport::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 36px 36px;
+    opacity: 0.2;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: screen;
+}
+
+#sceneCanvas {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@keyframes rise-in {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.99);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 980px) {
+    .app {
+        grid-template-columns: 1fr;
+        min-height: 100%;
+        padding: 12px;
+    }
+
+    .panel {
+        max-height: none;
+    }
+
+    .viewport {
+        min-height: 58vh;
+    }
+}
+
+@media (max-width: 640px) {
+    .app {
+        gap: 12px;
+        padding: 10px;
+    }
+
+    .panel {
+        padding: 16px;
+        border-radius: 20px;
+    }
+
+    .viewport {
+        min-height: 52vh;
+        border-radius: 20px;
+    }
+
+    .actions {
+        grid-template-columns: 1fr;
+    }
+
+    .control-row {
+        grid-template-columns: 16px 1fr 48px;
+        gap: 10px;
+    }
+}

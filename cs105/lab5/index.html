@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 5 - CS105</title>
+  <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+  <div class="app">
+    <aside class="panel">
+      <h1>Lab 5</h1>
+      <p class="subtitle">Biến đổi đối tượng và tham số camera</p>
+
+      <section class="section">
+        <h2>Phép Tịnh tiến</h2>
+        <div class="control-row">
+          <label for="tx">X</label>
+          <input id="tx" type="range" min="-6" max="6" step="0.1" value="0" data-group="transform" data-key="tx">
+          <output data-output-for="tx">0.0</output>
+        </div>
+        <div class="control-row">
+          <label for="ty">Y</label>
+          <input id="ty" type="range" min="-6" max="6" step="0.1" value="0" data-group="transform" data-key="ty">
+          <output data-output-for="ty">0.0</output>
+        </div>
+        <div class="control-row">
+          <label for="tz">Z</label>
+          <input id="tz" type="range" min="-6" max="6" step="0.1" value="0" data-group="transform" data-key="tz">
+          <output data-output-for="tz">0.0</output>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Phép Quay</h2>
+        <div class="control-row">
+          <label for="rx">X</label>
+          <input id="rx" type="range" min="-180" max="180" step="1" value="0" data-group="transform" data-key="rx">
+          <output data-output-for="rx">0</output>
+        </div>
+        <div class="control-row">
+          <label for="ry">Y</label>
+          <input id="ry" type="range" min="-180" max="180" step="1" value="0" data-group="transform" data-key="ry">
+          <output data-output-for="ry">0</output>
+        </div>
+        <div class="control-row">
+          <label for="rz">Z</label>
+          <input id="rz" type="range" min="-180" max="180" step="1" value="0" data-group="transform" data-key="rz">
+          <output data-output-for="rz">0</output>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Phép Tỉ lệ</h2>
+        <div class="control-row">
+          <label for="sx">X</label>
+          <input id="sx" type="range" min="0.2" max="3" step="0.1" value="1" data-group="transform" data-key="sx">
+          <output data-output-for="sx">1.0</output>
+        </div>
+        <div class="control-row">
+          <label for="sy">Y</label>
+          <input id="sy" type="range" min="0.2" max="3" step="0.1" value="1" data-group="transform" data-key="sy">
+          <output data-output-for="sy">1.0</output>
+        </div>
+        <div class="control-row">
+          <label for="sz">Z</label>
+          <input id="sz" type="range" min="0.2" max="3" step="0.1" value="1" data-group="transform" data-key="sz">
+          <output data-output-for="sz">1.0</output>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Vị trí Camera</h2>
+        <div class="control-row">
+          <label for="vrpX">X</label>
+          <input id="vrpX" type="range" min="-10" max="10" step="0.5" value="5" data-group="camera" data-key="vrpX">
+          <output data-output-for="vrpX">5.0</output>
+        </div>
+        <div class="control-row">
+          <label for="vrpY">Y</label>
+          <input id="vrpY" type="range" min="-10" max="10" step="0.5" value="3" data-group="camera" data-key="vrpY">
+          <output data-output-for="vrpY">3.0</output>
+        </div>
+        <div class="control-row">
+          <label for="vrpZ">Z</label>
+          <input id="vrpZ" type="range" min="-10" max="10" step="0.5" value="5" data-group="camera" data-key="vrpZ">
+          <output data-output-for="vrpZ">5.0</output>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Điểm nhìn</h2>
+        <div class="control-row">
+          <label for="lookX">X</label>
+          <input id="lookX" type="range" min="-10" max="10" step="0.1" value="0" data-group="camera" data-key="lookX">
+          <output data-output-for="lookX">0.0</output>
+        </div>
+        <div class="control-row">
+          <label for="lookY">Y</label>
+          <input id="lookY" type="range" min="-10" max="10" step="0.1" value="0" data-group="camera" data-key="lookY">
+          <output data-output-for="lookY">0.0</output>
+        </div>
+        <div class="control-row">
+          <label for="lookZ">Z</label>
+          <input id="lookZ" type="range" min="-10" max="10" step="0.1" value="0" data-group="camera" data-key="lookZ">
+          <output data-output-for="lookZ">0.0</output>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button id="resetTransform" type="button">Đặt lại biến đổi</button>
+        <button id="resetCamera" type="button">Đặt lại camera</button>
+      </div>
+    </aside>
+
+    <main class="viewport" id="viewport">
+      <canvas id="sceneCanvas"></canvas>
+    </main>
+  </div>
+
+  <script src="./src/three.min.js"></script>
+  <script src="./src/main.js"></script>
+</body>
+</html>
