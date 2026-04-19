@@ -20,6 +20,6 @@ Sorry but I'm lazy to upload those gif files to Google Drive, so I just upload t
 │   │   └── ...
 │   ├── logs/ # contains all log files generated during optimization (seed, best solution, best fitness)
 │   │   └── ...
-│   ├── solution.ipynb # source code for DE and CEM implementations
+│   ├── main.ipynb # source code for DE and CEM implementations
 │   └── README.md # you are here
 ```
