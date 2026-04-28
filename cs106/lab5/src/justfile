@@ -1,0 +1,14 @@
+original:
+  uv run pacman.py -l originalClassic -p AlphaBetaAgent -a depth=2,evalFn=betterEvaluationFunction --frameTime 0 -s 23520199
+
+tricky:
+  uv run pacman.py -l trickyClassic -p AlphaBetaAgent -a depth=2,evalFn=betterEvaluationFunction --frameTime 0 -s 23520199
+
+trapped:
+  uv run pacman.py -l trappedClassic -p AlphaBetaAgent -a depth=2,evalFn=betterEvaluationFunction --frameTime 0 -s 23520199
+
+contest:
+  uv run pacman.py -l contestClassic -p AlphaBetaAgent -a depth=2,evalFn=betterEvaluationFunction --frameTime 0 -s 23520199
+
+capsule:
+  uv run pacman.py -l capsuleClassic -p AlphaBetaAgent -a depth=2,evalFn=betterEvaluationFunction -s 23520199
