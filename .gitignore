@@ -11,6 +11,14 @@ wheels/
 data/
 *.pdf
 
-# report
 report*/
 assets/
+test_cases/
+logs/
+tmp*
+!*.tex
+
+cs221/
+cs231/
+cs419/
+se101/
