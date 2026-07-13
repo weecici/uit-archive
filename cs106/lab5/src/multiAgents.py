@@ -336,7 +336,6 @@ def getMazeDistance(point1, point2, gameState):
     while queue:
         current, dist = queue.pop(0)
 
-        # Cache the distance to all nodes seen along the way from p1
         mazeDistanceCache[(p1, current)] = dist
         mazeDistanceCache[(current, p1)] = dist
 
@@ -358,7 +357,7 @@ def betterEvaluationFunction(currentGameState):
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
     evaluation function (question 5).
 
-    DESCRIPTION: Uses a BFS-based fast mazeDistance (fully respecting walls) instead of Manhattan distance. It rewards finding the closest optimal path to food, eating scared ghosts, and avoiding non-scared ghosts correctly navigating around corners.
+    DESCRIPTION: Uses a maze distance (BFS-based, fully respecting walls) instead of Manhattan distance for calculating distances to food, ghosts, and capsules. It rewards finding the closest distance to a food and eating scared ghosts. In contrast, it penalizes being too close to non-scared ghosts (or scared ghosts that are too far away), or having too many remaining food items. The capsule evaluation is more nuanced: it only values capsules if a non-scared ghost is actively chasing us within 6 blocks, and it rewards eating a capsule more if it significantly increases the distance to the closest ghost. This encourages strategic use of power pellets rather than wasting them when ghosts are far away.
     """
 
     food_reward = 10.0
@@ -379,13 +378,18 @@ def betterEvaluationFunction(currentGameState):
         food_distances = [
             getMazeDistance(newPos, food, currentGameState) for food in foodList
         ]
-        closest_food = min(food_distances) if food_distances else 1
+
+        closest_food = min(food_distances)
+        farthest_food = max(food_distances)
 
         # Breakthrough: Food Density (How much food is within 5 steps?)
         food_density = sum(1 for dist in food_distances if dist <= 5)
 
         # Reward going to the immediate closest food
         score += food_reward / max(closest_food, 1)
+
+        # Penaly for being far from the farthest food (encourages clearing the board)
+        score -= farthest_food
 
         # Reward moving into dense clusters of food
         score += 2 * food_density
@@ -416,7 +420,6 @@ def betterEvaluationFunction(currentGameState):
                 if ghostDist <= 2:
                     score -= 3 * win_reward  # fatal danger
 
-                # Breakthrough: "Ghost Baiting" Synergy
                 # Only value capsules if a non-scared ghost is actively chasing us within 5 blocks.
                 # Do NOT eat a capsule when ghosts are far away (wastes the powerup).
                 if capsule_dists:
